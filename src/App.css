@@ -1,5 +1,6 @@
 .App {
   text-align:left;
+  text-emphasis-color: inherit;
 }
 
 .App-logo {
