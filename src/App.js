@@ -34,6 +34,15 @@ class App extends Component {
     return false;
   }
 
+
+  componentWillUpdate(nextProps,nextState){
+    console.log("componentWillUpdate çalıştı Props : " + nextProps.amount + " State : " + nextState.amount);
+  }
+  
+  componentDidUpdate(prevProps,prevState){
+    console.log("componentDidUpdate çalıştı Props : " + prevProps.amount + " State : " + prevState.amount);
+  }
+
   changeName =()=>{
     this.setState({
       name:"Ahmet"
