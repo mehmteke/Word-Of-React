@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css'; 
+import axios from 'axios';
 
 class App extends Component {
   
@@ -13,11 +14,10 @@ class App extends Component {
     let url = "http://localhost:53987/api/user";
        
     setTimeout( () => {
-      fetch(url)
-      .then(data => data.json())
+      axios.get(url) 
       .then(users=> {
         this.setState({
-          users: Object.entries(users),
+          users: Object.entries(users.data),
           isLoading:false
         })
       },9000) 
