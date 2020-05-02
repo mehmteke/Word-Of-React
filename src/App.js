@@ -4,8 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
-const news = ()=> {
-  return(<h1>News Page</h1>)
+const news = ({match})=> {
+    return(<h1>News Page : {match.params.id}</h1>)
 }
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
                 <Route path='/Contact' exact strict render= {
                                                   ()=> { return (<h1>Contact Page</h1>)}
                                                 }/>
-                <Route path ='/News' component = {news}/>
+                <Route path ='/News/:id' component = {news}/>
                 
             </div>
        </Router>
