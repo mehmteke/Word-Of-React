@@ -1,52 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css'; 
-import axios from 'axios';
+import './App.css';   
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 
 class App extends Component {
   
-    state = {
-      users:[],
-      isLoading:true
-    } 
-
-   componentDidMount() {
-    let url = "http://localhost:53987/api/user";
-       
-    setTimeout( () => {
-      axios.get(url) 
-      .then(users=> {
-        this.setState({
-          users: Object.entries(users.data),
-          isLoading:false
-        })
-      },9000) 
-   })
-  }
-     
-
-  render(){
-     const isLoading = this.state.isLoading; 
-     console.log(isLoading);
-     if(this.state.users.length === 0)  return(<div className="loader">Test</div>)
+  render(){ 
      return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1> Users </h1>
-          {
-            isLoading ? 'Loading...'
-                      : ''
-          }
-          {
-            !isLoading ? this.state.users.map((user,index) => <li key = {index}> {user[1]}</li>)
-                       : null
-          }
-        </header>
-      </div>
+       <Router>
+            <div>
+                <Route path="/" exact render={
+                                         () =>{ return (<h1>Home Page</h1>)}
+                                        }/>
+                <Route path='/Contact' render= {
+                                                  ()=> { return (<h1>Contact Page</h1>)}
+                                                }/>
+                
+            </div>
+       </Router>
     );
    }
-  
 }
 
 export default App;
