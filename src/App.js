@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';   
-import {BrowserRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
-
+import {BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch} from 'react-router-dom';
+import Error from './Error'
 
 const news = ({match})=> {
     return(<h1>News Page : {match.params.id}</h1>)
@@ -42,18 +42,22 @@ class App extends Component {
                  <button type="button" value = { this.state.isLoading ? 'Logout' : 'Login'}
                          onClick= {this.onLogin}> </button>
 
-                <Route path="/" exact render={
-                                         () =>{ return (<h1>Home Page</h1>)}
-                                        }/>
-                <Route path='/Contact' exact strict render= {
-                                                  ()=> { return (<h1>Contact Page</h1>)}
-                                                }/>
-                <Route path ='/News/:id' component = {news}/>
-                <Route path ='/Profile'  exect strict render = {
-                   () => { return( 
-                     this.state.isLoading ? <Profile></Profile> : <Redirect to = "/"></Redirect>
-                   )}
-                }/>
+                <Switch>
+                     <Route path="/" exact render={
+                                              () =>{ return (<h1>Home Page</h1>)}
+                                             }/>
+                     <Route path='/Contact' exact strict render= {
+                                                       ()=> { return (<h1>Contact Page</h1>)}
+                                                     }/>
+                     <Route path ='/News/:id' component = {news}/>
+                     <Route path ='/Profile'  exact strict render = {
+                        () => { return( 
+                          this.state.isLoading ? <Profile></Profile> : <Redirect to = "/"></Redirect>
+                        )}
+                     }/>
+                     <Route exact component = {Error}></Route>
+                </Switch>
+                      
                 
             </div>
        </Router>
