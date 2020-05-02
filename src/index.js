@@ -6,11 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import {createStore, combineReducers} from 'redux';
 
 function productReducer(state = [],action){
+  console.log("product");
   return state;
 }
 
 function userReducer(state = "",action){
-   return state;
+   switch(action.type){
+     case "userUpdate":
+          return action.payload
+     default:
+       return state;
+   } 
 }
 
 // combineReducers ayarlamak.
@@ -26,9 +32,23 @@ const store = createStore(rootReducer, {
     name:"Vestel"
   }],
   users:"Mehmet"
-});
+ },
+ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const updateUserAction = {
+  type:"userUpdate",
+  payload: {
+    user: "Ahmet"
+  }
+}
  
+store.dispatch(updateUserAction);
+
 console.log(store.getState());
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
