@@ -3,39 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
-function reducer(state,action){
-  if(action.type === "newState")
-    return action.payload.newState
-  return "state";
+function productReducer(state = [],action){
+  return state;
 }
 
-const store = createStore(reducer);
+function userReducer(state = "",action){
+   return state;
+}
 
-const action = {
-  type:"newState",
-  payload:{
-    newState : "My Name is Mehmet"
-  }
-};
+// combineReducers ayarlamak.
+const rootReducer = combineReducers({
+  products: productReducer,
+  users:userReducer
+});
 
-const action2 = {
-  type:"newState",
-  payload:{
-    newState : "My Name is Mehmet 2"
-  }
-};
-
-store.subscribe(
-  ()=>{
-    console.log("Store Update Edildi.");
-    console.log(store.getState());
-  }
-); 
-
-store.dispatch(action);
-store.dispatch(action2);
+// initial State vermek.
+const store = createStore(rootReducer, {
+  products: [{
+    type:"TV",
+    name:"Vestel"
+  }],
+  users:"Mehmet"
+});
+ 
+console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
