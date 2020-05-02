@@ -5,12 +5,23 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 
-function reducer(){
+function reducer(state,action){
+  if(action.type === "newState")
+    return action.payload.newState
   return "state";
 }
 
 const store = createStore(reducer);
 
+const action = {
+  type:"newState",
+  payload:{
+    newState : "My Name is Mehmet"
+  }
+};
+
+console.log(store.getState());
+store.dispatch(action);
 console.log(store.getState());
 
 ReactDOM.render(
