@@ -20,9 +20,22 @@ const action = {
   }
 };
 
-console.log(store.getState());
+const action2 = {
+  type:"newState",
+  payload:{
+    newState : "My Name is Mehmet 2"
+  }
+};
+
+store.subscribe(
+  ()=>{
+    console.log("Store Update Edildi.");
+    console.log(store.getState());
+  }
+); 
+
 store.dispatch(action);
-console.log(store.getState());
+store.dispatch(action2);
 
 ReactDOM.render(
   <React.StrictMode>
