@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';    
 import {connect} from 'react-redux';
-import {userUpdate,getUsers} from './Actions/users-actions'
+import {userUpdate,getUsers,getUsersAsync} from './Actions/users-actions'
 
 class App extends Component {
    
@@ -16,7 +16,7 @@ class App extends Component {
 
    componentDidMount() {
      setTimeout( () => {
-      this.props.onGetUsers();
+      this.props.ongetUsersAsync();
      },
      5000
      );
@@ -47,7 +47,8 @@ const mapStateToProps = (state,props)=> {
 
 const mapDispatchToProps = {
   onUpdateUser : userUpdate,
-  onGetUsers:getUsers
+  onGetUsers:getUsers,
+  ongetUsersAsync: getUsersAsync
 }
 
 // const mergeProps = (propsFromState,propsFromDispatch,ownProps)=>{

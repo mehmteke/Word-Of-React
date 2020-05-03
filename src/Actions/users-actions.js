@@ -24,10 +24,23 @@ export function showError() {
 
 export function getUsers(){
     return dispatch => {
-        let url = "http://localhost:53987/api/user65";
+        let url = "http://localhost:53987/api/user";
         axios.get(url)
              .then(response => response.data)
              .then(response => dispatch(userUpdate(response.name)))
              .catch(error =>  dispatch(showError()))
+    }
+}
+
+export  function getUsersAsync(){
+    return async dispatch => {
+        let url = "http://localhost:53987/api/user";
+        try {
+            const res = await axios.get(url);
+            dispatch(userUpdate(res.data.name));            
+        } catch (error) {
+            dispatch(showError());            
+        }
+
     }
 }
