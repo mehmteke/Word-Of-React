@@ -6,10 +6,11 @@ import {userUpdate} from './Actions/users-actions'
 
 class App extends Component {
    
-  onChangeUsers =()=>{
+  onUpdateUser =()=>{
     console.log("onChangeUser");
    // this.props.users = "Ahmet"  Burda yapaman neden dersen aciton üzerinde gitmen gerek.
-   this.props.dispatch(userUpdate("Ahmet"));
+   //this.props.dispatch(userUpdate("Ahmet"));
+   this.props.onUpdateUser("Ahmet");
   }
 
   render(){
@@ -20,7 +21,7 @@ class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>React Redux Dersine HoşGeldiniz</h2>
         <h2>{this.props.users}</h2>
-        <button type="button"   onClick = {this.onChangeUsers} >Change User</button>
+        <button type="button"   onClick = {this.onUpdateUser} >Change User</button>
       </header>
     </div>
     );
@@ -30,4 +31,9 @@ class App extends Component {
 const mapStateToProps = state => {
      return state;
 }
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = {
+  onUpdateUser : userUpdate
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
