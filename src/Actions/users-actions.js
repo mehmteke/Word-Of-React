@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const UPDATE_USER = "UPDATE_USER";
 
 export function userUpdate(newUser) {
@@ -8,4 +10,13 @@ export function userUpdate(newUser) {
           user:newUser
         }
     };
+}
+
+export function getUsers(){
+    return dispatch => {
+        let url = "http://localhost:53987/api/user";
+        axios.get(url)
+             .then(response => console.log(response))
+             .catch(error => console.log(error))
+    }
 }
