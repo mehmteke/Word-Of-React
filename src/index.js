@@ -39,7 +39,7 @@ const store = createStore(rootReducer, {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
-        <App />
+        <App Count = {4} />
     </Provider>
     
   </React.StrictMode>,
