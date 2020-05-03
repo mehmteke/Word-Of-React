@@ -40,4 +40,11 @@ const mapDispatchToProps = {
   onUpdateUser : userUpdate
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+const mergeProps = (propsFromState,propsFromDispatch,ownProps)=>{
+   console.log(propsFromState);
+   console.log(propsFromDispatch);
+   console.log(ownProps);
+   return {};
+}
+
+export default connect(mapStateToProps,mapDispatchToProps,mergeProps)(App);
