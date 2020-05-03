@@ -34,11 +34,7 @@ const updateUserAction = {
 }
  
 store.dispatch(updateUserAction);
-
 console.log(store.getState());
-
-
-
 
 ReactDOM.render(
   <React.StrictMode>
