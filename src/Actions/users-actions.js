@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const UPDATE_USER = "UPDATE_USER";
+export const GET_USER_ERROR = "GET_USER_ERROR";
 
 export function userUpdate(newUser) {
     console.log("userUpdate Action Call")
@@ -12,11 +13,21 @@ export function userUpdate(newUser) {
     };
 }
 
+export function showError() {
+    return {
+        type:GET_USER_ERROR,
+        payload: {
+            error: "ERROR !!!"
+        }
+    }
+}
+
 export function getUsers(){
     return dispatch => {
-        let url = "http://localhost:53987/api/user";
+        let url = "http://localhost:53987/api/user65";
         axios.get(url)
-             .then(response => console.log(response))
-             .catch(error => console.log(error))
+             .then(response => response.data)
+             .then(response => dispatch(userUpdate(response.name)))
+             .catch(error =>  dispatch(showError()))
     }
 }
