@@ -5,25 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import * as user from './Reducers/userReducer'; 
+import productReducer from './Reducers/productReducer';
 
-function productReducer(state = [],action){
-  console.log("product");
-  return state;
-}
-
-function userReducer(state = "",action){
-   switch(action.type){
-     case "userUpdate":
-          return action.payload
-     default:
-       return state;
-   } 
-}
 
 // combineReducers ayarlamak.
 const rootReducer = combineReducers({
   products: productReducer,
-  users:userReducer
+  users: user.userReducer
 });
 
 // initial State vermek.
