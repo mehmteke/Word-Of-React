@@ -1,5 +1,5 @@
 function productReducer(state = [],action){
-    console.log("product");
+    //console.log("product");
     return state;
   }
   

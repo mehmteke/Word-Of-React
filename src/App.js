@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 
 class App extends Component {
    
-  render(){  
+  render(){
+     console.log(this.props);  
      return (
       <div className="App">
       <header className="App-header">
@@ -18,4 +19,16 @@ class App extends Component {
    }
 }
 
-export default connect()(App);
+// Tüm state leri almak için
+// const mapStateToProps = state => {
+//      return state;
+// }
+
+//export default connect(mapStateToProps)(App);
+
+// Belli state leri almak için.
+const mapStateToPropsSpecial = state => ({
+  products:state.products
+})
+
+export default connect(mapStateToPropsSpecial)(App);
