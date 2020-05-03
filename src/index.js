@@ -26,14 +26,14 @@ const store = createStore(rootReducer, {
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-const updateUserAction = {
-  type:"userUpdate",
-  payload: {
-    user: "Ahmet"
-  }
-}
+// const updateUserAction = {
+//   type:"userUpdate",
+//   payload: {
+//     user: "Ahmet"
+//   }
+// }
  
-store.dispatch(updateUserAction);
+// store.dispatch(updateUserAction);
 //console.log(store.getState());
 
 ReactDOM.render(
